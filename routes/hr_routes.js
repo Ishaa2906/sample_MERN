@@ -7,6 +7,13 @@ router.get("/employees",async (req,res)=>{
     result.password=undefined;
     res.send(result);
 });
+
+router.delete("/deleteemp/:id", async (req, res)=>{
+    let result =await users.findByIdAndDelete(req.params.id);
+    if (result){
+        res.send("emp record deleted success");
+    }
+})
 //open postman => choose get method
 //localhost:3000/api/hr/employees
 router.post("/assign-task",(req,res)=>{

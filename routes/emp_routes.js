@@ -34,8 +34,13 @@ router.get("/viewtodos",(req,res)=>{
     res.send("viewtodo's page called")
 });
 
-router.put("/updateprofile",(req,res)=>{
-    res.send("update profile page called")
+router.patch("/updateprofile/:id", async (req,res)=>{
+    let data= req.body;
+    if(data.password){
+        data.password=await bcrypt.hash(data.password,10);
+    }
+    let updatedata=await users.findByIdAndUpdate(req.params.id,{$set:data});
+    res.send(updatedata);
 });
 
 
