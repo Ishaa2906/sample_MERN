@@ -3,7 +3,7 @@
     height:100%;
     background-color: black;
 }
-a{
+.header a{
     color: aliceblue;
     text-decoration: none;
     padding:5px;
